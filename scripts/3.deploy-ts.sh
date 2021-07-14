@@ -30,5 +30,4 @@ az deployment group create \
   --resource-group "$rg" \
   --name "arm-private-deployment" \
   --template-spec "$id" \
-  --parameters location="$location" \
   --output json
