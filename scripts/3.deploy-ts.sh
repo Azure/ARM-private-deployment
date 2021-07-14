@@ -3,7 +3,7 @@
 exit_with_error() {
   echo -e "Usage: $0\n" \
     "flag value                                    description\n" \
-    "-r   {RESOURCE_GROUP}                         Name of the resource group to store the template specs.\n" \
+    "-r   {RESOURCE_GROUP}                         Name of the resource group containing the Template Spec.\n" \
     "-l   {LOCATION}                               The location to use for deployments.\n" \
     "-n   {TEMPLATE_SPEC_NAME}                     Name of the Template Spec to deploy\n" \
     "-v   {VERSION}                                Version number to use for template specs i.e. 1.0.\n" 1>&2

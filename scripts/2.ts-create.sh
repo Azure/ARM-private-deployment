@@ -5,7 +5,7 @@ exit_with_error() {
   exit 1
 }
 
-while getopts r:l:v: option
+while getopts r:l:v:t:n: option
 do
   case "${option}"
     in
@@ -19,8 +19,8 @@ do
 done
 
 az ts create \
-  --name ent-scale \
-  --version "$template_name" \
+  --name "$template_name" \
+  --version "$version" \
   --resource-group "$rg" \
   --location "$location" \
   --template-file "$template_path" \
