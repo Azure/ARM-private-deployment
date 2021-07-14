@@ -5,6 +5,7 @@ exit_with_error() {
     "flag value                                    description\n" \
     "-r   {RESOURCE_GROUP}                         Name of the resource group to store the template specs.\n" \
     "-l   {LOCATION}                               The location to use for deployments.\n" \
+    "-n   {TEMPLATE_SPEC_NAME}                     Name of the Template Spec to deploy\n" \
     "-v   {VERSION}                                Version number to use for template specs i.e. 1.0.\n" 1>&2
   exit 1
 }
@@ -16,13 +17,14 @@ do
       r) rg=${OPTARG};;
       l) location=${OPTARG};;
       v) version=${OPTARG};;
+      n) template_spec=${{OPTARG}};;
       h) exit_with_error;;
       :) exit_with_error;;
       *) exit_with_error;;
   esac
 done
 
-id=$(az ts show --name ent-scale --resource-group "$rg" --version "$version" --query "id" -o tsv)
+id=$(az ts show --name "$template_spec" --resource-group "$rg" --version "$version" --query "id" -o tsv)
 
 az deployment tenant create \
   --name "arm-private-deployment" \
