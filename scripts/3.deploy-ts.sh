@@ -10,7 +10,7 @@ exit_with_error() {
   exit 1
 }
 
-while getopts :r:l:v:h: option
+while getopts :r:l:v:n:h: option
 do
   case "${option}"
     in
