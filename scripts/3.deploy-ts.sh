@@ -27,7 +27,7 @@ done
 id=$(az ts show --name "$template_spec" --resource-group "$rg" --version "$version" --query "id" -o tsv)
 
 az deployment group create \
-  --resource-group $rg
+  --resource-group "$rg" \
   --name "arm-private-deployment" \
   --template-spec "$id" \
   --parameters \
