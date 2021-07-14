@@ -1,0 +1,44 @@
+trigger:
+  - master
+  
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- job: createRG
+  displayName: Create Resource Group
+  steps:
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: '$armConnection'
+      scriptType: 'bash'
+      scriptLocation: 'scriptPath'
+      scriptPath: '../../scripts/1.rg-create.sh'
+      workingDirectory: './pipelines/ADO/'
+      failOnStandardError: true
+
+- job: createTS
+  displayName: Create Azure Template Spec
+  dependsOn: createRG
+  steps:
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: '$armConnection'
+      scriptType: 'bash'
+      scriptLocation: 'scriptPath'
+      scriptPath: '../../scripts/2.ts-create.sh'
+      workingDirectory: './pipelines/ADO/'
+      failOnStandardError: true
+
+- job: deployTS
+  displayName: Deploy Azure Template Spec
+  dependsOn: createTS
+  steps:
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: '$armConnection'
+      scriptType: 'bash'
+      scriptLocation: 'scriptPath'
+      scriptPath: '../../scripts/3.deploy-ts.sh'
+      workingDirectory: './pipelines/ADO/'
+      failOnStandardError: true
