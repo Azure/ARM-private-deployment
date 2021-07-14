@@ -1,19 +1,29 @@
-# Project
+# Deploying ARM Templates with Linked Templates from a Private Repository
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repository contains documentation and sample code for deploying an ARM template which references additional nested templates from a private Azure Devops or Github repository by uploading as an Azure Template Spec and then triggering a build of the Azure Template Spec.
 
-As the maintainer of this project, please make a few updates:
+> Please note the Azure Template Specs are currently in [Public Preview](https://techcommunity.microsoft.com/t5/azure-governance-and-management/arm-template-specs-is-now-public-preview/ba-p/2103322).
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+## Sample ARM Template
+
+This repository contains a sample ARM template which deploys:
+- A network interface
+- A network security group
+- A virtual network
+- A public IP address
+- A virtual machine (default SKU Standard B2s)
+
+This is just to use to demonstrate a deployment from a private repository using Azure Template Specs and should be replaced with your desired template. 
+
+The sample ARM template also utilises a linked template to demonstrate that linked templates are also uploaded to the Azure Template Spec.
+
+## Scripts
+
+## Multiple References to the Same Template
 
 ## Contributing
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
+This project welcomes contributions and suggestions.  Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
 
 When you submit a pull request, a CLA bot will automatically determine whether you need to provide
