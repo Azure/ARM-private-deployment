@@ -13,7 +13,7 @@ jobs:
       azureSubscription: '$(armConnection)'
       scriptType: 'bash'
       scriptLocation: 'scriptPath'
-      scriptPath: '../../scripts/1.rg-create.sh'
+      scriptPath: './scripts/1.rg-create.sh'
       arguments: '-r arm-private-deployment -l northeurope'
       workingDirectory: './pipelines/ADO/'
       failOnStandardError: true
@@ -27,7 +27,7 @@ jobs:
       azureSubscription: '$(armConnection)'
       scriptType: 'bash'
       scriptLocation: 'scriptPath'
-      scriptPath: '../../scripts/2.ts-create.sh'
+      scriptPath: './scripts/2.ts-create.sh'
       arguments: '-r arm-private-deployment -l northeurope -v "0.1" -t ../../templates/azuredeploy.json -n arm-private-deployment-ts'
       workingDirectory: './pipelines/ADO/'
       failOnStandardError: true
@@ -41,7 +41,7 @@ jobs:
       azureSubscription: '$(armConnection)'
       scriptType: 'bash'
       scriptLocation: 'scriptPath'
-      scriptPath: '../../scripts/3.deploy-ts.sh'
+      scriptPath: './scripts/3.deploy-ts.sh'
       arguments: '-r arm-private-deployment -l northeurope -n arm-private-deployment-ts -v "0.1"'
       workingDirectory: './pipelines/ADO/'
       failOnStandardError: true
