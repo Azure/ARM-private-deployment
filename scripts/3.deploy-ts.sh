@@ -32,5 +32,4 @@ az deployment group create \
   --template-spec "$id" \
   --parameters \
     location="$location" \
-  --location "$location" \
   --output json
