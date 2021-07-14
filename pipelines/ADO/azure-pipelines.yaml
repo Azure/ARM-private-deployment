@@ -1,5 +1,5 @@
 trigger:
-  - master
+  - main
   
 pool:
   vmImage: ubuntu-latest
@@ -10,7 +10,7 @@ jobs:
   steps:
   - task: AzureCLI@2
     inputs:
-      azureSubscription: '$armConnection'
+      azureSubscription: '$(armConnection)'
       scriptType: 'bash'
       scriptLocation: 'scriptPath'
       scriptPath: '../../scripts/1.rg-create.sh'
@@ -23,7 +23,7 @@ jobs:
   steps:
   - task: AzureCLI@2
     inputs:
-      azureSubscription: '$armConnection'
+      azureSubscription: '$(armConnection)'
       scriptType: 'bash'
       scriptLocation: 'scriptPath'
       scriptPath: '../../scripts/2.ts-create.sh'
@@ -36,7 +36,7 @@ jobs:
   steps:
   - task: AzureCLI@2
     inputs:
-      azureSubscription: '$armConnection'
+      azureSubscription: '$(armConnection)'
       scriptType: 'bash'
       scriptLocation: 'scriptPath'
       scriptPath: '../../scripts/3.deploy-ts.sh'
