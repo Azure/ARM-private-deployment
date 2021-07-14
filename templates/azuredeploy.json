@@ -105,7 +105,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "virtualmachinedeployment.json"
+          "relativePath": "virtualmachinedeploy.json"
         },
         "parameters": {
           "location": {
