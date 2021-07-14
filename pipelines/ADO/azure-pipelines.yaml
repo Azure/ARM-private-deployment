@@ -30,7 +30,6 @@ jobs:
       scriptPath: './scripts/2.ts-create.sh'
       arguments: '-r arm-private-deployment -l northeurope -v "0.1" -t "azuredeploy.json" -n arm-private-deployment-ts'
       workingDirectory: './templates'
-      failOnStandardError: true
 
 - job: deployTS
   displayName: Deploy Azure Template Spec
