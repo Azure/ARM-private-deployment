@@ -17,7 +17,7 @@ do
       r) rg=${OPTARG};;
       l) location=${OPTARG};;
       v) version=${OPTARG};;
-      n) template_spec=${{OPTARG}};;
+      n) template_spec=${OPTARG};;
       h) exit_with_error;;
       :) exit_with_error;;
       *) exit_with_error;;
