@@ -99,7 +99,6 @@
       "apiVersion": "2020-06-01",
       "name": "virtualMachineDeployment",
       "resourceGroup": "[resourceGroup().name]",
-      "location": "[parameters('location')]",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
