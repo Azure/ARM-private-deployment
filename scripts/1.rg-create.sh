@@ -15,7 +15,8 @@ do
   esac
 done
 
-
-az group create \
-  --name "$rg" \
-  --location "$location"
+if [ $(az group exists --name $rg -o tsv) = false ]; then
+  az group create \
+    --name "$rg" \
+    --location "$location"
+fi

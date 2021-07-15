@@ -27,9 +27,11 @@ do
   esac
 done
 
-az group create \
-  --name "$rg" \
-  --location "$location"
+if [ $(az group exists --name $rg -o tsv) = false ]; then
+  az group create \
+    --name "$rg" \
+    --location "$location"
+fi
 
 id=$(az ts show --name "$template_spec" --resource-group "$template_spec_rg" --version "$version" --query "id" -o tsv)
 
