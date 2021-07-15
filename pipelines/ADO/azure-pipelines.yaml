@@ -43,4 +43,3 @@ jobs:
       scriptPath: './scripts/3.deploy-ts.sh'
       arguments: '-r arm-private-deployment -l northeurope -n arm-private-deployment-ts -t template-specs -v "0.1"'
       workingDirectory: './templates'
-      failOnStandardError: true
