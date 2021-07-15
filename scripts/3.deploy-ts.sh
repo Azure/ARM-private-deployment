@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 exit_with_error() {
   echo -e "Usage: $0\n" \
