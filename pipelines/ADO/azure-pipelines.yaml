@@ -16,7 +16,6 @@ jobs:
       scriptPath: './scripts/1.rg-create.sh'
       arguments: '-r template-specs -l northeurope'
       workingDirectory: './templates'
-      failOnStandardError: true
 
 - job: createTS
   displayName: Create Azure Template Spec
