@@ -182,7 +182,9 @@
             "name": "[parameters('subnetName')]",
             "properties": {
               "addressPrefix": "[variables('subnetAddressPrefix')]",
-              "networkSecurityGroup": "[resourceId('Microsoft.Network/networkSecurityGroups',parameters('networkSecurityGroupName'))]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+              },
               "privateEndpointNetworkPolicies": "Enabled",
               "privateLinkServiceNetworkPolicies": "Enabled"
             }
