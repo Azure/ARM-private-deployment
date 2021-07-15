@@ -182,6 +182,7 @@
             "name": "[parameters('subnetName')]",
             "properties": {
               "addressPrefix": "[variables('subnetAddressPrefix')]",
+              "networkSecurityGroup": "[parameters('networkSecurityGroupName')]",
               "privateEndpointNetworkPolicies": "Enabled",
               "privateLinkServiceNetworkPolicies": "Enabled"
             }
