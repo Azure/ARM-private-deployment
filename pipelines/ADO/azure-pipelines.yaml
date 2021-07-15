@@ -28,7 +28,7 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'scriptPath'
       scriptPath: './scripts/2.ts-create.sh'
-      arguments: '-r arm-private-deployment -l northeurope -v "0.1" -t "azuredeploy.json" -n template-specs'
+      arguments: '-r template-specs -l northeurope -v "0.1" -t "azuredeploy.json" -n arm-private-deployment-ts'
       workingDirectory: './templates'
 
 - job: deployTS
