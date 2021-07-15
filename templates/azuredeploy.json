@@ -179,7 +179,7 @@
         },
         "subnets": [
           {
-            "name": "[format('{0}/{1}', parameters('virtualNetworkName'), parameters('subnetName'))]",
+            "name": "[parameters('subnetName')]",
             "properties": {
               "addressPrefix": "[variables('subnetAddressPrefix')]",
               "privateEndpointNetworkPolicies": "Enabled",
