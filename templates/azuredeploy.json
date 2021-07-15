@@ -89,9 +89,6 @@
   },
   "functions": [],
   "variables": {
-    "publicIPAddressName": "[format('{0}PublicIP', parameters('vmName'))]",
-    "networkInterfaceName": "[format('{0}NetInt', parameters('vmName'))]",
-    "osDiskType": "Standard_LRS",
     "subnetAddressPrefix": "10.1.0.0/24",
     "addressPrefix": "10.1.0.0/16",
     "adminPassword": "[concat('P', uniqueString(resourceGroup().id, '224F5A8B-51DB-46A3-A7C8-59B0DD584A41'), 'x', '!')]"
@@ -101,6 +98,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2020-06-01",
       "name": "virtualMachineDeployment",
+      "resourceGroup": "[resourceGroup().name]",
       "location": "[parameters('location')]",
       "properties": {
         "mode": "Incremental",
