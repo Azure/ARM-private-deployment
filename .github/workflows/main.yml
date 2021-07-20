@@ -13,8 +13,8 @@ jobs:
     - name: az login
       run: |
         az login --service-principal \
-          -u ${{ secrets.NON_PROD_SP_APP_ID }} \
-          -p ${{ secrets.NON_PROD_SP_PASSWORD }}
+          -u ${{ secrets.SP_APP_ID }} \
+          -p ${{ secrets.SP_PASSWORD }}
 
     - name: az account set
       run: az account set -s ${{ secrets.SUBSCRIPTION_ID }}
