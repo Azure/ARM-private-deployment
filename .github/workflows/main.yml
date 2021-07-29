@@ -40,7 +40,7 @@ jobs:
           -r template-specs \
           -l northeurope \
           -v 0.1 \
-          -t azuredeploy.json \
+          -t ./templates/azuredeploy.json \
           -n arm-private-deployment-ts
 
     - name: Deploy Azure Template Spec
