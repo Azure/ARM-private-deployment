@@ -27,7 +27,7 @@ There are three scripts which are utilised by the GitHub workflow or Azure Devop
 3. Deploy the Azure Template Spec. <br>
    This script deploys the infrastructure defined in the Template Spec created by the previous step. By default it deploys the infrastructure in a Resource Group called arm-private-deployment - this can be updated in the workflow or pipeline.
 
-For details on how to run the sample Azure Devops Pipeline or GitHub Workflow please see the documentation in the [ado-pipeline](./ado-pipeline/README.md) or [.github](./.github/README.md) directories.
+For details on how to run the sample Azure Devops Pipeline or GitHub Workflow please see the documentation in the [ado-pipeline](./ado-pipeline/AzureDevops-Pipeline-README.md) or [.github](./.github/GitHub-Workflow-README.md) directories.
 
 ## Contributing
 
