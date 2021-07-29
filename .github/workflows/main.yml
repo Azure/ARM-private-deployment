@@ -13,7 +13,8 @@ jobs:
       run: |
         az login --service-principal \
           -u ${{ secrets.SP_APP_ID }} \
-          -p ${{ secrets.SP_PASSWORD }}
+          -p ${{ secrets.SP_PASSWORD }} \
+          --tenant ${{ secrets.TENANT }}
 
     - name: az account set
       run: az account set -s ${{ secrets.SUBSCRIPTION_ID }}
@@ -38,7 +39,7 @@ jobs:
           -r template-specs \
           -l northeurope \
           -v 0.1 \
-          -t azuredeploy.json \
+          -t ./templates/azuredeploy.json \
           -n arm-private-deployment-ts
 
     - name: Deploy Azure Template Spec
