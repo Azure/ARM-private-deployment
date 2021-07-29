@@ -13,13 +13,21 @@ This repository contains a sample ARM template which deploys:
 - A public IP address
 - A virtual machine (default SKU Standard B2s)
 
-This is just to use to demonstrate a deployment from a private repository using Azure Template Specs and should be replaced with your desired template. 
+This is just to use to demonstrate a deployment from a private repository using Azure Template Specs and should be replaced with your desired template. It is based on the [Simple Linux Virtual Machine Quickstart](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-linux).
 
 The sample ARM template also utilises a linked template to demonstrate that linked templates are also uploaded to the Azure Template Spec.
 
 ## Scripts
 
-## Multiple References to the Same Template
+There are three scripts which are utilised by the GitHub workflow or Azure Devops Pipeline to deploy to Azure using Azure Template Specs:
+1. Create Resource Group. <br>
+   This script creates the Resource Group for the template specs, by default in the workflow or pipeline it creates a Resource Group called template-specs but this can be updated in the GitHub workflow. 
+2. Create the Azure Template Spec. <br>
+   This script creates the Azure Template Spec from the ARM templates in the templates directory. The Template Spec created is called arm-private-deployment-ts and is versioned v0.1, these can both be updated in the workflow or pipeline.
+3. Deploy the Azure Template Spec. <br>
+   This script deploys the infrastructure defined in the Template Spec created by the previous step. By default it deploys the infrastructure in a Resource Group called arm-private-deployment - this can be updated in the workflow or pipeline.
+
+For details on how to run the sample Azure Devops Pipeline or GitHub Workflow please see the documentation in the [ado-pipeline](./ado-pipeline/README.md) or [.github](./.github/README.md) directories.
 
 ## Contributing
 
