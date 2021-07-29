@@ -6,7 +6,6 @@ on:
 jobs:
   arm-private-deployment:
     runs-on: ubuntu-latest
-    environment: example
 
     steps:
     - uses: actions/checkout@v2
