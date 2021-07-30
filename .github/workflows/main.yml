@@ -9,23 +9,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: az login
-      run: |
-        az login --service-principal \
-          -u ${{ secrets.SP_APP_ID }} \
-          -p ${{ secrets.SP_PASSWORD }} \
-          --tenant ${{ secrets.TENANT }}
-
-    - name: az account set
-      run: az account set -s ${{ secrets.SUBSCRIPTION_ID }}
-
-    - name: validate subscription selection
-      run: |
-          currentsub=$(az account show --query id --output tsv)
-          if [ ! "$currentsub" = "${{ secrets.SUBSCRIPTION_ID }}" ]; then
-            echo -e "** Unable to select requested subscription.\nPlease make sure the Service Principal has access to this subscription - exiting **"
-            exit 1
-          fi
+    - name: Log in with Azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
 
     - name: Create RG for Template Specs
       run: |
@@ -49,5 +36,5 @@ jobs:
           -l northeurope \
           -v 0.1 \
           -n arm-private-deployment-ts \
-          -t template-specs 
+          -t template-specs
 

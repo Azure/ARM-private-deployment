@@ -27,7 +27,74 @@ There are three scripts which are utilised by the GitHub workflow or Azure Devop
 3. Deploy the Azure Template Spec. <br>
    This script deploys the infrastructure defined in the Template Spec created by the previous step. By default it deploys the infrastructure in a Resource Group called arm-private-deployment - this can be updated in the workflow or pipeline.
 
-For details on how to run the sample Azure Devops Pipeline or GitHub Workflow please see the documentation in the [ado-pipeline](./ado-pipeline) or [.github](./.github) directories.
+# How to Set Up This Example
+
+1. Start by creating your own copy of this repository in your own account or organization by clicking the `Use this Template`
+
+![Use this Template button](/images/useTemplate.png)
+
+2. Give your repository a name and change any options as needed, followed by `Create repository from template`
+
+![Create repository from template](/images/create.png)
+
+3. Replace the templates in the `templates` directory or use the example for now.
+
+## GitHub Actions
+### Pre-requisites
+#### Create Service Principal
+This implementation will require a Service Principal which your workflow will use to authenticate with Azure to deploy the resources
+- Log in to the required Azure Active Directory Tenant using the Azure CLI on your local device or via [Azure Cloud Shell](https://shell.azure.com): <br>
+`az login --tenant [Tenant ID]`
+- Select the target Platform Subscription, inserting the Subscription ID where indicated: <br> `az account set --subscription [Subscription ID]`
+- Create the Service Principal, providing an identifying name where indicated: <br> `az ad sp create-for-rbac --name [SP Name] --sdk-auth`
+- Take a note of the values of output for later use. It is recommended that you do not persist this information to disk or share the client secret for security reasons.
+
+### Set Up the GitHub Workflow
+
+1. Navigate to **Settings** -> **Secrets** -> **New repository secret** and add a secret with the following details:
+
+| Item | Value |
+| ---- | ----- |
+| Secret Name | AZURE_CREDENTIALS |
+| Value | Output from previous step (example below) |
+
+```
+{
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+}
+```
+
+2. Navigate to **Actions** -> **arm-private-deployment**.
+3. Click **Run workflow**, select the desired branch and click the **Run workflow** button.
+
+## Azure DevOps Pipeline
+
+1. This implementation will require a Service Connection in Azure Devops to authenticate with Azure to deploy the resources. If a suitable Service Connection is not available please create one using the steps documented [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#create-a-service-connection).
+
+2. In your Azure Devops organization, navigate to Pipelines and select New Pipeline:
+
+![New Pipeline](/images/new_pipeline.png)
+
+3. Select GitHub for the source code location:
+
+![New Pipeline](/images/github_pipeline_source.png)
+
+4. OPTIONAL - If you have not authorized Azure DevOps to access GitHub you can do that now by authorizing Azure Pipelines like so
+
+![Azure Pipeline Auth banner](/images/OAuth.png)
+![Auth button](/images/Auth.png)
+
+5. Select your copy of this repository and it should automatically pick up the pipeline.
+
+6. Open the variables side panel and add a variable called "armConnection" with a value of the name of the service connection noted in step 1.
+
+> You can also change the vmImage if you do not have an Ubuntu Azure Devops runner. You will need to ensure that the runner has the Azure CLI installed if it's a self-hosted runner.
+
+8. Save and run the pipeline.
 
 ## Contributing
 
