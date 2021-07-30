@@ -21,13 +21,13 @@ The sample ARM template also utilises a linked template to demonstrate that link
 
 There are three scripts which are utilised by the GitHub workflow or Azure Devops Pipeline to deploy to Azure using Azure Template Specs:
 1. Create Resource Group. <br>
-   This script creates the Resource Group for the template specs, by default in the workflow or pipeline it creates a Resource Group called template-specs but this can be updated in the GitHub workflow. 
+   This script creates the Resource Group for the template specs, by default in the workflow or pipeline it creates a Resource Group called template-specs but this can be updated in the GitHub workflow.
 2. Create the Azure Template Spec. <br>
    This script creates the Azure Template Spec from the ARM templates in the templates directory. The Template Spec created is called arm-private-deployment-ts and is versioned v0.1, these can both be updated in the workflow or pipeline.
 3. Deploy the Azure Template Spec. <br>
    This script deploys the infrastructure defined in the Template Spec created by the previous step. By default it deploys the infrastructure in a Resource Group called arm-private-deployment - this can be updated in the workflow or pipeline.
 
-For details on how to run the sample Azure Devops Pipeline or GitHub Workflow please see the documentation in the [ado-pipeline](./ado-pipeline/AzureDevops-Pipeline-README.md) or [.github](./.github/GitHub-Workflow-README.md) directories.
+For details on how to run the sample Azure Devops Pipeline or GitHub Workflow please see the documentation in the [ado-pipeline](./ado-pipeline) or [.github](./.github) directories.
 
 ## Contributing
 
@@ -44,8 +44,8 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 ## Trademarks
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft
+trademarks or logos is subject to and must follow
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
