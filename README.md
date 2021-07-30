@@ -47,7 +47,7 @@ This implementation will require a Service Principal which your workflow will us
 `az login --tenant [Tenant ID]`
 - Select the target Platform Subscription, inserting the Subscription ID where indicated: <br> `az account set --subscription [Subscription ID]`
 - Create the Service Principal, providing an identifying name where indicated: <br> `az ad sp create-for-rbac --name [SP Name] --sdk-auth`
-- Take a note of the values of output for later use. It is recommended that you do not persist this information to disk or share the client secret for security reasons.
+- Take a note of the json output for later use. It is recommended that you do not persist this information to disk or share the client secret for security reasons.
 
 ### Set Up the GitHub Workflow
 
