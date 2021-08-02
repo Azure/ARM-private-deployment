@@ -29,15 +29,15 @@ There are three scripts which are utilised by the GitHub workflow or Azure Devop
 
 # How to Set Up This Example
 
-1. Start by creating your own copy of this repository in your own account or organization by clicking the `Use this Template`
+1. Start by creating a copy of this repository in your own account or organization by clicking the **Use this Template**.
 
 ![Use this Template button](/images/useTemplate.png)
 
-2. Give your repository a name and change any options as needed, followed by `Create repository from template`
+2. Add a name and description for the new repository and set the visibility of the repository. Then click **Create repository from template**.
 
 ![Create repository from template](/images/create.png)
 
-3. Replace the templates in the `templates` directory or use the example for now.
+1. Replace the templates in the **templates** directory or use the example ARM template provided.
 
 ## GitHub Actions
 ### Pre-requisites
@@ -51,12 +51,7 @@ This implementation will require a Service Principal which your workflow will us
 
 ### Set Up the GitHub Workflow
 
-1. Navigate to **Settings** -> **Secrets** -> **New repository secret** and add a secret with the following details:
-
-| Item | Value |
-| ---- | ----- |
-| Secret Name | AZURE_CREDENTIALS |
-| Value | Output from previous step (example below) |
+1. Navigate to **Settings** -> **Secrets** -> **New repository secret** and add a new secret named **AZURE_CREDENTIALS**. Add the json output which was noted from the Service Principal creation as the secret value. Example output below for reference:
 
 ```
 {
@@ -75,20 +70,20 @@ This implementation will require a Service Principal which your workflow will us
 
 1. This implementation will require a Service Connection in Azure Devops to authenticate with Azure to deploy the resources. If a suitable Service Connection is not available please create one using the steps documented [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#create-a-service-connection).
 
-2. In your Azure Devops organization, navigate to Pipelines and select New Pipeline:
+2. In your Azure Devops organization, navigate to Pipelines and select New Pipeline.
 
 ![New Pipeline](/images/new_pipeline.png)
 
-3. Select GitHub for the source code location:
+3. Select GitHub for the source code location.
 
 ![New Pipeline](/images/github_pipeline_source.png)
 
-4. OPTIONAL - If you have not authorized Azure DevOps to access GitHub you can do that now by authorizing Azure Pipelines like so
+4. If you have not authorized Azure DevOps to access GitHub you can do that now by authorizing Azure Pipelines as shown below. This will not be required if you have already authorized Azure Devops to access GitHub.
 
 ![Azure Pipeline Auth banner](/images/OAuth.png)
 ![Auth button](/images/Auth.png)
 
-5. Select your copy of this repository and it should automatically pick up the pipeline.
+5. Select your copy of this repository. The pipeline file should automatically be selected.
 
 6. Open the variables side panel and add a variable called "armConnection" with a value of the name of the service connection noted in step 1.
 
