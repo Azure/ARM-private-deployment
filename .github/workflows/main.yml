@@ -43,5 +43,5 @@ jobs:
           -l ${{ env.LOCATION }} \
           -v ${{ env.TEMPLATE_SPEC_VERSION }} \
           -n ${{ env.TEMPLATE_SPEC_NAME}} \
-          -t template-specs
+          -t ${{ env.TEMPLATE_SPEC_RESOURCE_GROUP }}
 

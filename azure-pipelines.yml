@@ -47,5 +47,5 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'scriptPath'
       scriptPath: './scripts/3.deploy-ts.sh'
-      arguments: '-r $(deployResourceGroup) -l $(location) -n $(templateSpecName) -t template-specs -v $(templateSpecVersion)'
+      arguments: '-r $(deployResourceGroup) -l $(location) -n $(templateSpecName) -t $(templateSpecResourceGroup) -v $(templateSpecVersion)'
       workingDirectory: './templates'
