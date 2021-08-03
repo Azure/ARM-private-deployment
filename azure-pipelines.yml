@@ -14,7 +14,7 @@ variables:
   - name: templateSpecVersion
     value: "0.1"
   - name: deployResourceGroup
-    value: arm-private-deployment
+    value: arm-private-deployment-2
 
 jobs:
   - job: armPrivateDeployment
