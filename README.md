@@ -1,6 +1,8 @@
 # Deploying ARM Templates with Linked Templates from a Private Repository
 
-This repository contains documentation and sample code for deploying an ARM template which references additional nested templates from a private Azure DevOps or Github repository by uploading it as an [Azure Template Spec](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-specs) and then triggering a build of the Azure Template Spec.
+Previously deploying ARM templates, which contain links to additional templates, has not been possible without the repository being publicly accessible. This is because when the top level ARM template is submitted to Azure Resource Manager, the linked templates are not automatically uploaded and therefore need to pulled in at deploy time from Azure. This means they must be referenced using a URL which can be accessed from Azure (e.g. via a public GitHub repository). [Azure Template Specs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-specs) removes this requirement, as all required templates can be uploaded to Azure Template Specs which are then privately available within your subscription at deploy time.
+
+This repository contains documentation and sample pipelines for creating an Azure Template Spec from an ARM template (including any linked templates) and then deploying the Azure Template Spec to build the infrastructure defined in the ARM template.
 
 > Please note the Azure Template Specs are currently in [Public Preview](https://techcommunity.microsoft.com/t5/azure-governance-and-management/arm-template-specs-is-now-public-preview/ba-p/2103322).
 
