@@ -26,7 +26,7 @@
     "authenticationType": {
       "type": "string",
       "defaultValue": "password",
-      "allowedValues": ["sshPublicKey", "password"],
+      "allowedValues": [ "sshPublicKey", "password" ],
       "metadata": {
         "description": "Type of authentication to use on the Virtual Machine. SSH key is recommended."
       }
@@ -173,9 +173,12 @@
       "apiVersion": "2020-05-01",
       "name": "[parameters('virtualNetworkName')]",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+      ],
       "properties": {
         "addressSpace": {
-          "addressPrefixes": ["[variables('addressPrefix')]"]
+          "addressPrefixes": [ "[variables('addressPrefix')]" ]
         },
         "subnets": [
           {

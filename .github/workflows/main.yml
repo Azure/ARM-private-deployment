@@ -3,6 +3,13 @@ name: arm-private-deployment
 on:
   workflow_dispatch:
 
+env:
+  LOCATION: northeurope
+  TEMPLATE_SPEC_RESOURCE_GROUP: template-specs
+  TEMPLATE_SPEC_VERSION: "0.1"
+  TEMPLATE_SPEC_NAME: arm-private-deployment-ts
+  DEPLOY_RESOURCE_GROUP: arm-private-deployment
+
 jobs:
   arm-private-deployment:
     runs-on: ubuntu-latest
@@ -17,24 +24,24 @@ jobs:
     - name: Create RG for Template Specs
       run: |
         ./scripts/1.rg-create.sh \
-          -r template-specs \
-          -l northeurope
+          -r ${{ env.TEMPLATE_SPEC_RESOURCE_GROUP }} \
+          -l ${{ env.LOCATION }}
 
     - name: Created Azure Template Spec
       run: |
         ./scripts/2.ts-create.sh \
-          -r template-specs \
-          -l northeurope \
-          -v 0.1 \
+          -r ${{ env.TEMPLATE_SPEC_RESOURCE_GROUP }} \
+          -l ${{ env.LOCATION }} \
+          -v ${{ env.TEMPLATE_SPEC_VERSION }} \
           -t ./templates/azuredeploy.json \
-          -n arm-private-deployment-ts
+          -n ${{ env.TEMPLATE_SPEC_NAME}}
 
     - name: Deploy Azure Template Spec
       run: |
         ./scripts/3.deploy-ts.sh \
-          -r arm-private-deployment \
-          -l northeurope \
-          -v 0.1 \
-          -n arm-private-deployment-ts \
-          -t template-specs
+          -r ${{ env.DEPLOY_RESOURCE_GROUP }} \
+          -l ${{ env.LOCATION }} \
+          -v ${{ env.TEMPLATE_SPEC_VERSION }} \
+          -n ${{ env.TEMPLATE_SPEC_NAME}} \
+          -t ${{ env.TEMPLATE_SPEC_RESOURCE_GROUP }}
 
