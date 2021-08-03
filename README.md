@@ -50,7 +50,7 @@ This implementation will require a Service Principal which your workflow will us
 - Log in to the required Azure Active Directory tenant using the Azure CLI on your local device or via [Azure Cloud Shell](https://shell.azure.com): <br>
 `az login --tenant [Tenant ID]`
 - Select the target platform subscription, inserting the subscription ID where indicated: <br> `az account set --subscription [Subscription ID]`
-- Create the Service Principal, providing an identifying name where indicated: <br> `az ad sp create-for-rbac --name [SP Name] --sdk-auth`
+- Create the Service Principal, providing an identifying name where indicated: <br> `az ad sp create-for-rbac --role Contributor --name [SP Name] --sdk-auth`
 - Take a note of the JSON output for later use. It is recommended that you do not persist this information to disk or share the client secret for security reasons.
 
 ### Set up the GitHub workflow
