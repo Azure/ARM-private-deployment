@@ -1,6 +1,6 @@
 # Deploying ARM Templates with Linked Templates from a Private Repository
 
-This repository contains documentation and sample code for deploying an ARM template which references additional nested templates from a private Azure Devops or Github repository by uploading as an Azure Template Spec and then triggering a build of the Azure Template Spec.
+This repository contains documentation and sample code for deploying an ARM template which references additional nested templates from a private Azure DevOps or Github repository by uploading as an Azure Template Spec and then triggering a build of the Azure Template Spec.
 
 > Please note the Azure Template Specs are currently in [Public Preview](https://techcommunity.microsoft.com/t5/azure-governance-and-management/arm-template-specs-is-now-public-preview/ba-p/2103322).
 
@@ -20,7 +20,7 @@ The sample ARM template also utilises a linked template to demonstrate that link
 
 ## Scripts
 
-There are three scripts which are utilised by the GitHub workflow or Azure Devops Pipeline to deploy to Azure using Azure Template Specs:
+There are three scripts which are utilised by the GitHub workflow or Azure DevOps Pipeline to deploy to Azure using Azure Template Specs:
 
 1. Create Resource Group. <br>
    This script creates the Resource Group for the Template Specs, by default it creates a Resource Group called *template-specs* but this can be updated in the workflow or pipeline.
@@ -74,11 +74,11 @@ This implementation will require a Service Principal which your workflow will us
 
 ### Create a Service Connection
 
-This implementation will require a Service Connection in Azure Devops to authenticate with Azure to deploy the resources. If a suitable Service Connection is not available please create one using the steps documented [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#create-a-service-connection).
+This implementation will require a Service Connection in Azure DevOps to authenticate with Azure to deploy the resources. If a suitable Service Connection is not available please create one using the steps documented [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#create-a-service-connection).
 
 ### Set up the pipeline
 
-1. In your Azure Devops organization, navigate to **Pipelines** and select **New pipeline**.
+1. In your Azure DevOps organization, navigate to **Pipelines** and select **New pipeline**.
 
 ![New Pipeline](/images/new_pipeline.png)
 
@@ -86,7 +86,7 @@ This implementation will require a Service Connection in Azure Devops to authent
 
 ![GitHub pipeline source](/images/github_pipeline_source.png)
 
-3. If you have not authorized Azure DevOps to access GitHub you can do that now by authorizing Azure Pipelines as shown below. This will not be required if you have already authorized Azure Devops to access GitHub.
+3. If you have not authorized Azure DevOps to access GitHub you can do that now by authorizing Azure Pipelines as shown below. This will not be required if you have already authorized Azure DevOps to access GitHub.
 
 ![Azure Pipeline Auth banner](/images/OAuth.png)
 ![Auth button](/images/Auth.png)
@@ -95,7 +95,7 @@ This implementation will require a Service Connection in Azure Devops to authent
 
 5. Open the variables side panel and add a variable called **armConnection** with a value of the name of the service connection noted in step 1.
 
-> You can also change the **vmImage** option if you do not have an Ubuntu Azure Devops runner. You will need to ensure that the runner has the Azure CLI installed if it's a self-hosted runner.
+> You can also change the **vmImage** option if you do not have an Ubuntu Azure DevOps runner. You will need to ensure that the runner has the Azure CLI installed if it's a self-hosted runner.
 
 6. Save and run the pipeline.
 
