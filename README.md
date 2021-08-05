@@ -6,14 +6,7 @@ This repository contains documentation and sample code for deploying an ARM temp
 
 ## Sample ARM Template
 
-This repository contains a sample ARM template which deploys:
-- A network interface
-- A network security group
-- A virtual network
-- A public IP address
-- A virtual machine (default SKU Standard B2s)
-
-This is just to use to demonstrate a deployment from a private repository using Azure Template Specs and should be replaced with your desired template. It is based on the [Simple Linux Virtual Machine Quickstart](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-linux).
+This repository contains a sample ARM template which deploys a storage account via a linked template. This is just to use to demonstrate a deployment from a private repository using Azure Template Specs and should be replaced with your desired template.
 
 The sample ARM template also utilises a linked template to demonstrate that linked templates are also uploaded to the Azure Template Spec.
 
