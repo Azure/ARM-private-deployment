@@ -8,15 +8,7 @@ This repository contains documentation and sample pipelines for creating an Azur
 
 ## Sample ARM Template
 
-This repository contains a sample ARM template which deploys:
-
-- A network interface
-- A network security group
-- A virtual network
-- A public IP address
-- A virtual machine (default SKU Standard B2s)
-
-This is just to demonstrate a deployment from a private repository using Azure Template Specs and should be replaced with your desired template. It is based on the [Simple Linux Virtual Machine Quickstart](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-linux).
+This repository contains a sample ARM template which deploys a storage account via a linked template. This is just to demonstrate a deployment from a private repository using Azure Template Specs and should be replaced with your desired template.
 
 The sample ARM template also utilises a linked template to demonstrate that linked templates are also uploaded as an Azure Template Spec.
 
@@ -77,6 +69,8 @@ This implementation will require a Service Principal which your workflow will us
 ### Create a Service Connection
 
 This implementation will require a Service Connection in Azure DevOps to authenticate with Azure to deploy the resources. If a suitable Service Connection is not available please create one using the steps documented [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#create-a-service-connection).
+
+> Note: The Resource Group option should be left empty, otherwise the Service Principal will only be able to deploy to that Resource Group and will not be able to deploy a new Resource Group to deploy either the example ARM template or the template it has been replaced with.
 
 ### Set up the pipeline
 
