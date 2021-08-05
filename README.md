@@ -10,7 +10,7 @@ This repository contains documentation and sample pipelines for creating an Azur
 
 This repository contains a sample ARM template which deploys a storage account via a linked template. This is just to demonstrate a deployment from a private repository using Azure Template Specs and should be replaced with your desired template.
 
-The sample ARM template also utilises a linked template to demonstrate that linked templates are also uploaded as an Azure Template Spec.
+The sample ARM template utilises a linked template to demonstrate that linked templates are also uploaded as part of an Azure Template Spec.
 
 ## Scripts
 
