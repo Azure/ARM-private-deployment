@@ -63,6 +63,8 @@ This implementation will require a Service Principal which your workflow will us
 
 1. This implementation will require a Service Connection in Azure Devops to authenticate with Azure to deploy the resources. If a suitable Service Connection is not available please create one using the steps documented [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#create-a-service-connection).
 
+> Note: The Resource Group option should be left empty, otherwise the Service Principal will only be able to deploy to that Resource Group and will not be able to deploy a new Resource Group to deploy either the example ARM template or the template it has been replaced with.
+
 2. In your Azure Devops organization, navigate to Pipelines and select New Pipeline.
 
 ![New Pipeline](/images/new_pipeline.png)
