@@ -13,7 +13,7 @@
     },
     "storageAccountNamePrefix": {
       "type": "string",
-      "defaultValue": "examplestorageaccount",
+      "defaultValue": "example",
       "metadata": {
         "description": "Name of the VNET"
       }
