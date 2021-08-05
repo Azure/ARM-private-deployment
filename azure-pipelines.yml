@@ -1,44 +1,50 @@
 trigger:
   - main
-  
+
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  - name: location
+    value: northeurope
+  - name: templateSpecResourceGroup
+    value: template-specs
+  - name: templateSpecName
+    value: arm-private-deployment-ts
+  - name: templateSpecVersion
+    value: "0.1"
+  - name: deployResourceGroup
+    value: arm-private-deployment-2
+
 jobs:
-- job: createRG
-  displayName: Create Resource Group
-  steps:
-  - task: AzureCLI@2
-    inputs:
-      azureSubscription: '$(armConnection)'
-      scriptType: 'bash'
-      scriptLocation: 'scriptPath'
-      scriptPath: './scripts/1.rg-create.sh'
-      arguments: '-r template-specs -l northeurope'
-      workingDirectory: './templates'
+  - job: armPrivateDeployment
+    steps:
+      - task: AzureCLI@2
+        displayName: Create Resource Group
+        inputs:
+          azureSubscription: "$(armConnection)"
+          scriptType: "bash"
+          scriptLocation: "scriptPath"
+          scriptPath: "./scripts/1.rg-create.sh"
+          arguments: "-r $(templateSpecResourceGroup) -l $(location)"
+          workingDirectory: "./templates"
 
-- job: createTS
-  displayName: Create Azure Template Spec
-  dependsOn: createRG
-  steps:
-  - task: AzureCLI@2
-    inputs:
-      azureSubscription: '$(armConnection)'
-      scriptType: 'bash'
-      scriptLocation: 'scriptPath'
-      scriptPath: './scripts/2.ts-create.sh'
-      arguments: '-r template-specs -l northeurope -v "0.1" -t "azuredeploy.json" -n arm-private-deployment-ts'
-      workingDirectory: './templates'
+      - task: AzureCLI@2
+        displayName: Create Azure Template Spec
+        inputs:
+          azureSubscription: "$(armConnection)"
+          scriptType: "bash"
+          scriptLocation: "scriptPath"
+          scriptPath: "./scripts/2.ts-create.sh"
+          arguments: '-r $(templateSpecResourceGroup) -l $(location) -v "$(templateSpecVersion)" -t "azuredeploy.json" -n $(templateSpecName)'
+          workingDirectory: "./templates"
 
-- job: deployTS
-  displayName: Deploy Azure Template Spec
-  dependsOn: createTS
-  steps:
-  - task: AzureCLI@2
-    inputs:
-      azureSubscription: '$(armConnection)'
-      scriptType: 'bash'
-      scriptLocation: 'scriptPath'
-      scriptPath: './scripts/3.deploy-ts.sh'
-      arguments: '-r arm-private-deployment -l northeurope -n arm-private-deployment-ts -t template-specs -v "0.1"'
-      workingDirectory: './templates'
+      - task: AzureCLI@2
+        displayName: Deploy Azure Template Spec
+        inputs:
+          azureSubscription: "$(armConnection)"
+          scriptType: "bash"
+          scriptLocation: "scriptPath"
+          scriptPath: "./scripts/3.deploy-ts.sh"
+          arguments: '-r $(deployResourceGroup) -l $(location) -n $(templateSpecName) -t $(templateSpecResourceGroup) -v "$(templateSpecVersion)"'
+          workingDirectory: "./templates"
