@@ -33,7 +33,7 @@ There are three scripts which are utilised by the GitHub workflow or Azure DevOp
 
 ![Create repository from template](/images/create.png)
 
-1. Replace the templates in the **templates** directory or use the example ARM template provided.
+3. Replace the templates in the **templates** directory or use the example ARM template provided.
 
 ## GitHub Actions
 
