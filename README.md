@@ -4,8 +4,6 @@ Previously, deploying ARM templates which contain links to additional templates 
 
 This repository contains documentation and sample pipelines for creating an Azure Template Spec from an ARM template (including any linked templates) and then deploying the Azure Template Spec to build the infrastructure defined in the ARM template.
 
-> Please note the Azure Template Specs are currently in [Public Preview](https://techcommunity.microsoft.com/t5/azure-governance-and-management/arm-template-specs-is-now-public-preview/ba-p/2103322).
-
 ## Sample ARM Template
 
 This repository contains a sample ARM template which deploys a storage account via a linked template. This is just to demonstrate a deployment from a private repository using Azure Template Specs and should be replaced with your desired template.
